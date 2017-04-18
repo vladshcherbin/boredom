@@ -1,9 +1,12 @@
 # Boredom
 
+Express, React, React Router, SSR wiring example.
+
 ## Packages
 
 - Express
 - React
+- React Router
 - Webpack
 - Eslint (Airbnb)
 
