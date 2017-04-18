@@ -1,5 +1,10 @@
 {
   "env": {
+    "client": {
+      "presets": ["react", ["env", {
+        "targets": { "browsers": "> 2%" }
+      }]]
+    },
     "server": {
       "presets": [["env", {
         "targets": { "node": true }

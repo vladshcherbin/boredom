@@ -4,6 +4,7 @@
   "main": "server/index.js",
   "scripts": {
     "lint": "eslint server",
+    "build": "BABEL_ENV=client webpack -w",
     "server": "BABEL_ENV=server nodemon server --exec babel-node"
   },
   "dependencies": {
@@ -15,13 +16,16 @@
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
+    "babel-loader": "^6.4.1",
     "babel-preset-env": "^1.4.0",
+    "babel-preset-react": "^6.24.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "webpack": "^2.4.1"
   },
   "repository": "https://github.com/VladShcherbin/boredom",
   "author": "Vlad Shcherbin <vlad.shcherbin@gmail.com>",
