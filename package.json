@@ -1,0 +1,9 @@
+{
+  "name": "boredom",
+  "version": "1.0.0",
+  "main": "server/index.js",
+  "repository": "https://github.com/VladShcherbin/boredom",
+  "author": "Vlad Shcherbin <vlad.shcherbin@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
