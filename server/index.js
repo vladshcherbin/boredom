@@ -1,4 +1,7 @@
 import express from 'express'
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+import App from '../client/App'
 
 const app = express()
 
@@ -7,7 +10,10 @@ app.set('views', `${__dirname}/views`)
 app.use(express.static(`${__dirname}/public`))
 
 app.get('*', (req, res) => {
-  const html = 'Hello, React'
+  const clientApp = (
+    <App />
+  )
+  const html = ReactDOMServer.renderToString(clientApp)
 
   res.render('index', { html })
 })
