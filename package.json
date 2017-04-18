@@ -2,6 +2,19 @@
   "name": "boredom",
   "version": "1.0.0",
   "main": "server/index.js",
+  "scripts": {
+    "server": "BABEL_ENV=server nodemon server --exec babel-node"
+  },
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.15.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "nodemon": "^1.11.0"
+  },
   "repository": "https://github.com/VladShcherbin/boredom",
   "author": "Vlad Shcherbin <vlad.shcherbin@gmail.com>",
   "license": "MIT",
