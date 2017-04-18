@@ -7,9 +7,9 @@ Express, React, Redux, React Router, SSR wiring example.
 - Express
 - React
 - Redux
-- React Router
-- Webpack
-- Eslint (Airbnb)
+- React Router 4
+- Webpack 2
+- Eslint (tweaked Airbnb)
 
 ## Commands
 
