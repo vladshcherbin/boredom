@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'react-apollo'
-import { articleFull } from '../api/articles'
+import { articleFull } from '../graphQL/queries'
 import PageStatus from '../components/PageStatus'
 
 const Article = ({ data: { loading, error, article } }) => {

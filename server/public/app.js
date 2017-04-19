@@ -17043,7 +17043,7 @@ var _reactApollo = __webpack_require__(82);
 
 var _reactRouterDom = __webpack_require__(48);
 
-var _articles = __webpack_require__(321);
+var _queries = __webpack_require__(322);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -17118,7 +17118,7 @@ Articles.propTypes = {
   match: _propTypes2.default.object.isRequired
 };
 
-exports.default = (0, _reactApollo.graphql)(_articles.articlesWithUser)(Articles);
+exports.default = (0, _reactApollo.graphql)(_queries.articlesWithUser)(Articles);
 
 /***/ }),
 /* 157 */
@@ -36673,7 +36673,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactApollo = __webpack_require__(82);
 
-var _articles = __webpack_require__(321);
+var _queries = __webpack_require__(322);
 
 var _PageStatus = __webpack_require__(153);
 
@@ -36741,7 +36741,7 @@ Article.propTypes = {
   data: _propTypes2.default.object.isRequired
 };
 
-exports.default = (0, _reactApollo.graphql)(_articles.articleFull, {
+exports.default = (0, _reactApollo.graphql)(_queries.articleFull, {
   options: function options(_ref2) {
     var match = _ref2.match;
     return { variables: { slug: match.params.slug } };
@@ -36749,7 +36749,8 @@ exports.default = (0, _reactApollo.graphql)(_articles.articleFull, {
 })(Article);
 
 /***/ }),
-/* 321 */
+/* 321 */,
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

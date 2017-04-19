@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'react-apollo'
 import { Link } from 'react-router-dom'
-import { articlesWithUser } from '../api/articles'
+import { articlesWithUser } from '../graphQL/queries'
 
 const Articles = ({ data: { loading, error, articles }, match }) => {
   if (loading) {
