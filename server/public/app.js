@@ -15043,6 +15043,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(48);
 
+var _Layout = __webpack_require__(319);
+
+var _Layout2 = _interopRequireDefault(_Layout);
+
 var _Home = __webpack_require__(157);
 
 var _Home2 = _interopRequireDefault(_Home);
@@ -15055,6 +15059,10 @@ var _Articles = __webpack_require__(156);
 
 var _Articles2 = _interopRequireDefault(_Articles);
 
+var _Article = __webpack_require__(320);
+
+var _Article2 = _interopRequireDefault(_Article);
+
 var _NotFound = __webpack_require__(152);
 
 var _NotFound2 = _interopRequireDefault(_NotFound);
@@ -15063,12 +15071,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var App = function App() {
   return _react2.default.createElement(
-    _reactRouterDom.Switch,
+    _Layout2.default,
     null,
-    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default }),
-    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/about', component: _About2.default }),
-    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/articles', component: _Articles2.default }),
-    _react2.default.createElement(_reactRouterDom.Route, { component: _NotFound2.default })
+    _react2.default.createElement(
+      _reactRouterDom.Switch,
+      null,
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/about', component: _About2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/articles', component: _Articles2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/articles/:slug', component: _Article2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { component: _NotFound2.default })
+    )
   );
 };
 
@@ -17018,8 +17031,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n  query ArticlesWithUser {\n    articles {\n      id\n      title\n      user {\n        name\n      }\n    }\n  }\n'], ['\n  query ArticlesWithUser {\n    articles {\n      id\n      title\n      user {\n        name\n      }\n    }\n  }\n']);
-
 var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
@@ -17030,16 +17041,18 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactApollo = __webpack_require__(82);
 
+var _reactRouterDom = __webpack_require__(48);
+
+var _articles = __webpack_require__(321);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var Articles = function Articles(props) {
-  var _props$data = props.data,
-      loading = _props$data.loading,
-      error = _props$data.error,
-      articles = _props$data.articles;
-
+var Articles = function Articles(_ref) {
+  var _ref$data = _ref.data,
+      loading = _ref$data.loading,
+      error = _ref$data.error,
+      articles = _ref$data.articles,
+      match = _ref.match;
 
   if (loading) {
     return _react2.default.createElement(
@@ -17078,7 +17091,11 @@ var Articles = function Articles(props) {
             _react2.default.createElement(
               'p',
               null,
-              article.title
+              _react2.default.createElement(
+                _reactRouterDom.Link,
+                { to: match.url + '/' + article.slug },
+                article.title
+              )
             ),
             _react2.default.createElement(
               'p',
@@ -17097,10 +17114,11 @@ var Articles = function Articles(props) {
 };
 
 Articles.propTypes = {
-  data: _propTypes2.default.object.isRequired
+  data: _propTypes2.default.object.isRequired,
+  match: _propTypes2.default.object.isRequired
 };
 
-exports.default = (0, _reactApollo.graphql)((0, _reactApollo.gql)(_templateObject))(Articles);
+exports.default = (0, _reactApollo.graphql)(_articles.articlesWithUser)(Articles);
 
 /***/ }),
 /* 157 */
@@ -36552,6 +36570,205 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 319 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(8);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactRouterDom = __webpack_require__(48);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Layout = function Layout(_ref) {
+  var children = _ref.children;
+  return _react2.default.createElement(
+    'section',
+    { className: 'boredom' },
+    _react2.default.createElement(
+      'header',
+      null,
+      _react2.default.createElement(
+        'nav',
+        null,
+        _react2.default.createElement(
+          'ul',
+          null,
+          _react2.default.createElement(
+            'li',
+            null,
+            _react2.default.createElement(
+              _reactRouterDom.NavLink,
+              { to: '/' },
+              'Home'
+            )
+          ),
+          _react2.default.createElement(
+            'li',
+            null,
+            _react2.default.createElement(
+              _reactRouterDom.NavLink,
+              { to: '/articles' },
+              'Articles'
+            )
+          ),
+          _react2.default.createElement(
+            'li',
+            null,
+            _react2.default.createElement(
+              _reactRouterDom.NavLink,
+              { to: '/about' },
+              'About'
+            )
+          )
+        )
+      )
+    ),
+    _react2.default.createElement(
+      'main',
+      null,
+      children
+    )
+  );
+};
+
+Layout.propTypes = {
+  children: _propTypes2.default.node.isRequired
+};
+
+exports.default = Layout;
+
+/***/ }),
+/* 320 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(8);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactApollo = __webpack_require__(82);
+
+var _articles = __webpack_require__(321);
+
+var _PageStatus = __webpack_require__(153);
+
+var _PageStatus2 = _interopRequireDefault(_PageStatus);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Article = function Article(_ref) {
+  var _ref$data = _ref.data,
+      loading = _ref$data.loading,
+      error = _ref$data.error,
+      article = _ref$data.article;
+
+  if (loading) {
+    return _react2.default.createElement(
+      'p',
+      null,
+      'loading'
+    );
+  }
+
+  if (error) {
+    return _react2.default.createElement(
+      'p',
+      null,
+      'request error'
+    );
+  }
+
+  if (article) {
+    return _react2.default.createElement(
+      'section',
+      null,
+      _react2.default.createElement(
+        'p',
+        null,
+        article.title
+      ),
+      _react2.default.createElement(
+        'p',
+        null,
+        article.contents
+      ),
+      _react2.default.createElement(
+        'p',
+        null,
+        'Author - ',
+        article.user.name
+      )
+    );
+  }
+
+  return _react2.default.createElement(
+    _PageStatus2.default,
+    { code: 404 },
+    _react2.default.createElement(
+      'p',
+      null,
+      'No such article :('
+    )
+  );
+};
+
+Article.propTypes = {
+  data: _propTypes2.default.object.isRequired
+};
+
+exports.default = (0, _reactApollo.graphql)(_articles.articleFull, {
+  options: function options(_ref2) {
+    var match = _ref2.match;
+    return { variables: { slug: match.params.slug } };
+  }
+})(Article);
+
+/***/ }),
+/* 321 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.articleFull = exports.articlesWithUser = undefined;
+
+var _templateObject = _taggedTemplateLiteral(['\n  query ArticlesWithUser {\n    articles {\n      id\n      title\n      slug\n      user {\n        name\n      }\n    }\n  }\n'], ['\n  query ArticlesWithUser {\n    articles {\n      id\n      title\n      slug\n      user {\n        name\n      }\n    }\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  query ArticleFull($slug: String!) {\n    article(slug: $slug) {\n      id\n      title\n      contents\n      user {\n        name\n      }\n    }\n  }\n'], ['\n  query ArticleFull($slug: String!) {\n    article(slug: $slug) {\n      id\n      title\n      contents\n      user {\n        name\n      }\n    }\n  }\n']);
+
+var _reactApollo = __webpack_require__(82);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var articlesWithUser = exports.articlesWithUser = (0, _reactApollo.gql)(_templateObject);
+var articleFull = exports.articleFull = (0, _reactApollo.gql)(_templateObject2);
 
 /***/ })
 /******/ ]);

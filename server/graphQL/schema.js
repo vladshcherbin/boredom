@@ -8,11 +8,13 @@ export default `
   type Article {
     id: Int!
     title: String!
+    slug: String!
+    contents: String!
     user: User!
   }
 
   type Query {
-    article(id: Int!): Article
+    article(slug: String!): Article
     articles: [Article]
     user(id: Int!): User
     users: [User]

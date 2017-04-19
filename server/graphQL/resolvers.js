@@ -14,8 +14,8 @@ export default {
     }
   },
   Query: {
-    article(_, { id }) {
-      return find(articles, { id })
+    article(_, { slug }) {
+      return find(articles, { slug })
     },
     articles() {
       return articles

@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { gql, graphql } from 'react-apollo'
+import { graphql } from 'react-apollo'
+import { Link } from 'react-router-dom'
+import { articlesWithUser } from '../api/articles'
 
-const Articles = (props) => {
-  const { loading, error, articles } = props.data
-
+const Articles = ({ data: { loading, error, articles }, match }) => {
   if (loading) {
     return <p>loading</p>
   }
@@ -21,7 +21,7 @@ const Articles = (props) => {
           {articles.map(article => (
             <li key={article.id}>
               <div>
-                <p>{article.title}</p>
+                <p><Link to={`${match.url}/${article.slug}`}>{article.title}</Link></p>
                 <p>{`Author: ${article.user.name}`}</p>
               </div>
             </li>
@@ -35,17 +35,8 @@ const Articles = (props) => {
 }
 
 Articles.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 }
 
-export default graphql(gql`
-  query ArticlesWithUser {
-    articles {
-      id
-      title
-      user {
-        name
-      }
-    }
-  }
-`)(Articles)
+export default graphql(articlesWithUser)(Articles)
