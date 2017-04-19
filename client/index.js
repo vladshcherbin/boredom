@@ -1,19 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
-import { Provider } from 'react-redux'
+import { ApolloClient, ApolloProvider } from 'react-apollo'
 import { BrowserRouter } from 'react-router-dom'
-import reducers from './modules/store'
+import combineReducersWithApollo from './modules/store'
 import App from './App'
 
 const preloadedState = window.INITIAL_STATE
 delete window.INITIAL_STATE
-const store = createStore(reducers, preloadedState)
+
+const apolloClient = new ApolloClient({ initialState: { apollo: preloadedState.apollo } })
+const store = createStore(combineReducersWithApollo(apolloClient), preloadedState)
 
 ReactDOM.render((
-  <Provider store={store}>
+  <ApolloProvider store={store} client={apolloClient}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </Provider>
+  </ApolloProvider>
 ), document.getElementById('app'))

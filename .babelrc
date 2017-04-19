@@ -8,7 +8,10 @@
     "server": {
       "presets": ["react", ["env", {
         "targets": { "node": true }
-      }]]
+      }]],
+      "plugins": [
+        ["transform-object-rest-spread", { "useBuiltIns": true }]
+      ]
     }
   }
 }

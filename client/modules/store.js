@@ -7,6 +7,7 @@ function userReducer(state = 'Jamal', action) {
   }
 }
 
-export default combineReducers({
-  user: userReducer
+export default apolloClient => combineReducers({
+  user: userReducer,
+  apollo: apolloClient.reducer()
 })

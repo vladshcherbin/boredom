@@ -1,15 +1,16 @@
 # Boredom
 
-Express, React, Redux, React Router, SSR wiring example.
+Node, Express, React, Redux, React Router, SSR, GraphQL, Apollo wiring example.
 
 ## Packages
 
+- Node
 - Express
 - React
 - Redux
 - React Router 4
 - GraphQL
-- Apollo
+- Apollo GraphQL Client
 - Webpack 2
 - Eslint (tweaked Airbnb)
 

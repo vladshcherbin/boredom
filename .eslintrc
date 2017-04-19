@@ -3,7 +3,8 @@
   "rules":  {
     "semi": ["error", "never"],
     "comma-dangle": ["error", "never"],
-    "react/jsx-filename-extension": ["warn", { "extensions": [".js"] }]
+    "react/jsx-filename-extension": ["warn", { "extensions": [".js"] }],
+    "react/forbid-prop-types": "off"
   },
   "env": {
     "browser": true
