@@ -8,6 +8,8 @@ Express, React, Redux, React Router, SSR wiring example.
 - React
 - Redux
 - React Router 4
+- GraphQL
+- Apollo
 - Webpack 2
 - Eslint (tweaked Airbnb)
 
